@@ -1,0 +1,91 @@
+.main__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.main_container--title {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+
+.sub__tittle {
+    width: 100%;
+    margin: 0 10vw;
+    font-size: 35px;
+    display: flex;
+    color: white;
+    text-align: center;
+}
+
+.sub__tittle--error {
+    font-weight: bold;
+    color: rgb(189, 121, 121);
+}
+
+.main_container--button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 0 10vw;
+}
+
+.main_container--button .button {
+    padding: 10px 40px;
+    background: rgb(203, 255, 251);
+    border: 2px hidden rgb(170, 250, 194);
+    font-size: 15px;
+    border-radius: 50px;
+    box-shadow: 2.5px 5px 10px #888888;
+    cursor: pointer;
+    color: rgb(17, 17, 17);
+    font-weight: bold;
+}
+
+.button:active,
+.button:hover {
+    border: 2px solid transparent;
+    background-color: rgb(158, 245, 223);
+}
+
+.main_container--button img {
+    width: 40px;
+    margin: 0px 10px;
+}
+
+.main__container--img {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin: 20px 200px;
+    transform: translate(50px, 100px);
+}
+
+.main__container--img img {
+    width: 500px;
+    height: 100%;
+    animation-name: pulse;
+    animation-duration: 2.2s;
+    animation-delay: 0ms;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.0;
+    }
+
+    50% {
+        transform: scale(0.50);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

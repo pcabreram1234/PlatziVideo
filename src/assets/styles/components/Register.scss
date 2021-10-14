@@ -1,0 +1,100 @@
+
+.register__container {
+    padding: 20vh;
+    background: linear-gradient(#21C08B, #AB88FF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.register__container--form {
+
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 30px 40px;
+    background: rgb(93, 155, 246);
+    background: linear-gradient(0deg, rgba(93, 155, 246, 0.1) 10%, rgba(49, 250, 76, 0.1) 100%);
+    margin-bottom: 20px;
+}
+
+.register__container--form h2 {
+    color: white;
+    font-size: 20px;
+}
+
+.input {
+    margin: 2px 0px;
+    padding: 10px 20px;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid white;
+    border-right: 0px;
+    outline: none;
+    border-radius: 10px;
+    background-color: transparent;
+    height: 50px;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+}
+
+.singIng__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.singIng__container a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
+.button {
+    background: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px solid white;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.footer {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    height: 319px;
+    width: 100%;
+    background: #AB88FF;
+}
+
+.footer div:first-child {
+    margin-left: 12px;
+}
+
+.footer div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 280px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.footer a {
+    color: white;
+    font-size: 12px;
+    margin-right: 10px;
+    text-decoration: none;
+}
