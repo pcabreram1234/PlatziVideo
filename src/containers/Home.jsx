@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
@@ -6,38 +6,43 @@ import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
 import "../assets/styles/App.scss";
 
-const Home = () => {
-  <>
-    <Search />
-    {initialState.mylist.length > 0 && (
-      <Categories title="Mi Lista">
+/// Los valores mylist, trends, originals se pasan de forma destructurante
+/// Los mismos deben concordar con los nombres de las propiedades del store
+/// Asi Redux los entiende como propiedades
+const Home = ({ mylist, trends, originals }) => {
+  return (
+    <>
+      <Search />
+      {mylist.length > 0 && (
+        <Categories title="Mi Lista">
+          <Carousel>
+            {mylist.map((item) => (
+              <CarouselItem key={item.id} {...item} />
+            ))}
+          </Carousel>
+        </Categories>
+      )}
+      <Categories title="Tendencias">
         <Carousel>
-          {initialState.mylist.map((item) => (
+          {trends.map((item) => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
       </Categories>
-    )}
-    <Categories title="Tendencias">
-      <Carousel>
-        {initialState.trends.map((item) => (
-          <CarouselItem key={item.id} {...item} />
-        ))}
-      </Carousel>
-    </Categories>
-    <Categories title="Originales de Platzi Video">
-      <Carousel>
-        {initialState.originals.map((item) => (
-          <CarouselItem key={item.id} {...item} />
-        ))}
-      </Carousel>
-    </Categories>
-  </>;
+      <Categories title="Originales de Platzi Video">
+        <Carousel>
+          {originals.map((item) => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
+        </Carousel>
+      </Categories>
+    </>
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
-    mylist: state.myList,
+    mylist: state.mylist,
     trends: state.trends,
     originals: state.originals,
   };
