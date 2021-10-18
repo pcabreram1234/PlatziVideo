@@ -1,20 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { loginRequest } from "../actions";
 import "../assets/styles/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const [form, setValues] = useState({
+    email: "",
+  });
+
+  /// Cuando se coloca en una funcion el parametro "event"
+  /// Se puede obviar en el target que la ejecuta el inidicar dicho argumento
+
+  const handleInput = (event) => {
+    setValues({
+      ...form,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.loginRequest(form);
+    props.history.push("/");
+  };
+
   return (
     <section className="login">
       <div className="login__container">
         <h2>Inicia sesión</h2>
-        <form className="login__container--form">
-          <input type="text" className="input" placeholder="Correo" />
-          <input type="password" className="input" placeholder="Contraseña" />
-          <button className="button">Iniciar sesión</button>
+        <form className="login__container--form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="input"
+            placeholder="Correo"
+            name="email"
+            onChange={handleInput}
+          />
+          <input
+            type="password"
+            className="input"
+            placeholder="Contraseña"
+            name="password"
+            onChange={handleInput}
+          />
+          <button className="button" type="submit">
+            Iniciar sesión
+          </button>
           <div className="login__container--remember-me">
-            <label for="">
+            <label htmlFor="">
               <input type="checkbox" id="cbox1" value="checkbox" />
               Recuérdame
             </label>
@@ -40,4 +76,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = { loginRequest };
+
+export default connect(null, mapDispatchToProps)(Login);
