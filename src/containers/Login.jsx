@@ -7,7 +7,7 @@ import twitterIcon from "../assets/static/twitter-icon.png";
 import { Link } from "react-router-dom";
 
 const Login = (props) => {
-  const [form, setValues] = useState(null);
+  const [form, setValues] = useState({ email: "" });
 
   /// Cuando se coloca en una funcion el parametro "event"
   /// Se puede obviar en el target que la ejecuta el inidicar dicho argumento
@@ -20,7 +20,6 @@ const Login = (props) => {
   };
 
   const handleSubmit = (event) => {
-    console.log(form);
     event.preventDefault();
     props.loginRequest(form);
     ///Como tenemos React-Router podemos usar la propiedad history
