@@ -25,3 +25,10 @@ export const logOutRequest = (payload) => {
     payload: payload,
   };
 };
+
+export const registerRequest = (payload) => {
+  return {
+    type: "REGISTER_REQUEST",
+    payload: payload,
+  };
+};

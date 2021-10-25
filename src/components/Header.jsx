@@ -17,7 +17,7 @@ const Header = (props) => {
   const handleLogOut = () => {
     props.logOutRequest({});
   };
-  
+
   return (
     <header className="header">
       <Link to="/">
@@ -62,8 +62,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapsDispatchToProps = () => {
+const mapDispatchToProps = () => {
   logOutRequest;
 };
 
-export default connect(mapStateToProps, mapsDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,15 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { registerRequest } from "../actions";
 import "../assets/styles/components/Register.scss";
 import { Link } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
+  const [form, setValues] = useState({
+    email: "",
+    name: "",
+    password: "",
+  });
+
+  const handleInput = (event) => {
+    setValues({
+      ...form,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.registerRequest(form);
+    props.history.push("/");
+  };
+
   return (
     <div className="register__container">
-      <form className="register__container--form">
+      <form className="register__container--form" onSubmit={handleSubmit}>
         <h2>Resgístrate</h2>
-        <input type="text" className="input" placeholder="Nombre" />
-        <input type="email" className="input" placeholder="Correo" />
-        <input type="password" className="input" placeholder="Contraseña" />
+        <input
+          name="name"
+          type="text"
+          className="input"
+          placeholder="Nombre"
+          onChange={handleInput}
+        />
+        <input
+          name="email"
+          type="email"
+          className="input"
+          placeholder="Correo"
+          onChange={handleInput}
+        />
+        <input
+          name="password"
+          type="password"
+          className="input"
+          placeholder="Contraseña"
+          onChange={handleInput}
+        />
         <button className="button">Registrarme</button>
         <div className="singIng__container">
           <Link to="/login">Iniciar sesión</Link>
@@ -19,4 +58,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapDispatchToProps = () => {
+  registerRequest;
+};
+
+export default connect(null, mapDispatchToProps)(Register);
