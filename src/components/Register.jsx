@@ -19,6 +19,8 @@ const Register = (props) => {
   };
 
   const handleSubmit = (event) => {
+    //Usamos props porque ya estamos encapsulando nuestra aplicacion
+    //Con el <BrowserRouter>
     event.preventDefault();
     props.registerRequest(form);
     props.history.push("/");

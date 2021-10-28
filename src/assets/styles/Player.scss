@@ -1,0 +1,47 @@
+.Player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    position: relative;
+}
+
+.Player-back {
+    position: absolute;
+    top: 120px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.Player-back button {
+    opacity: 0.2;
+    width: 25vh;
+    text-decoration: none;
+    color: white;
+    background: #FE3ACB;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    outline: 2px solid #FE3ACB;
+    outline-offset: 0.2rem;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:active {
+    color: black;
+    transform: scale(1.2);
+    transition-property: transform;
+    transition-duration: 0.8;
+    transition-timing-function: cubic-bezier(.28, .57, .79, 1.11)
+}
