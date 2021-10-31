@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import classNames from "classnames";
 import gravatar from "../utils/gravatar";
 import { logOutRequest } from "../actions";
 import "../assets/styles/components/Header.scss";
@@ -8,18 +10,24 @@ import logo from "../assets/static/logo-platzi-video-BW2.png";
 import userIcon from "../assets/static/user-icon.png";
 
 const Header = (props) => {
-  const { user } = props;
+  console.log(props);
+  const { user, isLogin, isRegister } = props;
   //Como user es un objeto porque asi es como esta estructurado
   //en el store, se debe usar el metodo Object.Keys para saber la
   //longitud de dicho objeto
-  const hasUser = Object.keys(user).length;
+  let hasUser = Object.keys(user).length;
 
   const handleLogOut = () => {
-    props.logOutRequest({});
+    props.logOutRequest(null);
   };
 
+  const headerClass = classNames("header", {
+    isLogin,
+    isRegister,
+  });
+
   return (
-    <header className="header">
+    <header className={headerClass}>
       <Link to="/">
         <img className="header__img" src={logo} alt="Platzi Video" />
       </Link>
@@ -41,9 +49,10 @@ const Header = (props) => {
           ) : null}
           {hasUser ? (
             <li>
-              <a href="#logout" onClick={handleLogOut}>
+              <a href="/login" onClick={handleLogOut}>
                 Cerrar Sesion
               </a>
+              {/*      <Link to="/login" onClick={handleLogOut}></Link> */}
             </li>
           ) : (
             <li>
@@ -56,6 +65,12 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  user: PropTypes.any.isRequired,
+  isLogin: PropTypes.bool,
+  isRegister: PropTypes.bool,
+};
+
 const mapStateToProps = (state) => {
   return {
     user: state.user,
@@ -63,7 +78,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = () => {
-  logOutRequest;
+  return {
+    logOutRequest: logOutRequest,
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Header from "../components/Header";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
@@ -12,7 +14,8 @@ import "../assets/styles/App.scss";
 const Home = ({ mylist, trends, originals }) => {
   return (
     <>
-      <Search />
+      <Header />
+      <Search isHome />
       {mylist.length > 0 && (
         <Categories title="Mi Lista">
           <Carousel>
@@ -46,5 +49,11 @@ const mapStateToProps = (state) => {
     trends: state.trends,
     originals: state.originals,
   };
+};
+
+Home.propTypes = {
+  mylist: PropTypes.array,
+  trends: PropTypes.array,
+  originals: PropTypes.array,
 };
 export default connect(mapStateToProps, null)(Home);

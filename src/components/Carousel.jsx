@@ -1,12 +1,15 @@
-import React from 'react';
-import '../assets/styles/components/Carousel.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import "../assets/styles/components/Carousel.scss";
 
 const Carousel = ({ children }) => (
   <section className="carousel">
-    <div className="carousel__container">
-      {children}
-    </div>
+    <div className="carousel__container">{children}</div>
   </section>
 );
+
+Carousel.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Carousel;

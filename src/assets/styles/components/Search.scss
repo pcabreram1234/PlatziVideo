@@ -12,9 +12,13 @@
   font-size: 25px;
 }
 
-.input {
-  background-color: rgba(255,255,255,0.1);
-  border: 2px solid white;
+.main .isHome {
+  width: 70%;
+}
+
+.main .input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.562);
   border-radius: 25px;
   color: white;
   font-family: 'Muli', sans-serif;
@@ -23,6 +27,10 @@
   margin-bottom: 20px;
   outline: none;
   padding: 0px 20px;
+}
+
+.main .input:hover {
+  border: 2px solid rgb(255, 255, 255)
 }
 
 ::placeholder {
