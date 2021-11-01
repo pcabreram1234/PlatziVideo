@@ -39,3 +39,10 @@ export const getVideoSource = (payload) => {
     payload: payload,
   };
 };
+
+export const searchInput = (payload) => {
+  return {
+    type: "GET_SEARCH_INPUT",
+    payload: payload,
+  };
+};

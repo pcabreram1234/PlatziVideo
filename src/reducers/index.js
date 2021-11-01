@@ -44,6 +44,12 @@ const reducer = (state, action) => {
           state.originals.find((item) => item.id === Number(action.payload)) ||
           [],
       };
+
+    case "GET_SEARCH_INPUT":
+      return {
+        ...state,
+        currentSearch: [action.payload],
+      };
     default:
       return state;
   }
