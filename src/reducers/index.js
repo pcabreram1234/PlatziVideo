@@ -5,7 +5,6 @@ const reducer = (state, action) => {
         ...state,
         mylist: [...state.mylist, action.payload],
       };
-      break;
 
     case "DELETE_FAVORITE":
       return {
@@ -14,21 +13,18 @@ const reducer = (state, action) => {
           return items.id !== action.payload;
         }),
       };
-      break;
 
     case "LOGIN_REQUEST":
       return {
         ...state,
         user: [action.payload],
       };
-      break;
 
     case "LOGOUT_REQUEST":
       return {
         ...state,
         user: [action.payload],
       };
-      break;
 
     case "REGISTER_REQUEST":
       return {
@@ -45,11 +41,12 @@ const reducer = (state, action) => {
           [],
       };
 
-    case "GET_SEARCH_INPUT":
+    case "@GET_INPUT":
       return {
         ...state,
-        currentSearch: [action.payload],
+        search: action.payload,
       };
+
     default:
       return state;
   }

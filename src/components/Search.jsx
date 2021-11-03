@@ -9,11 +9,14 @@ import "../assets/styles/components/Search.scss";
 const Search = (props) => {
   const { isHome } = props;
   const inputStyle = classNames("input", { isHome });
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState([null]);
 
   const handleInput = (event) => {
     setSearch(event.currentTarget.value.toString());
-    searchInput(search);
+  };
+
+  const sendSearchState = () => {
+    return props.searchInput(search);
   };
 
   return (
@@ -25,7 +28,9 @@ const Search = (props) => {
         placeholder="Buscar..."
         onChange={handleInput}
       />
-      <label htmlFor="">Resultados para {search}</label>
+      <label htmlFor="" onChange={sendSearchState}>
+        Resultados para: {search}
+      </label>
     </section>
   );
 };
@@ -38,7 +43,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = () => {
   return {
-    currentSearch: searchInput,
+    searchInput: searchInput,
   };
 };
 

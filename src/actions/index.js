@@ -42,7 +42,7 @@ export const getVideoSource = (payload) => {
 
 export const searchInput = (payload) => {
   return {
-    type: "GET_SEARCH_INPUT",
+    type: "@GET_INPUT",
     payload: payload,
   };
 };
