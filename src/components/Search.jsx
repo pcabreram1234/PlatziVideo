@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { connect } from "react-redux";
 import { searchInput } from "../actions";
@@ -9,15 +9,15 @@ import "../assets/styles/components/Search.scss";
 const Search = (props) => {
   const { isHome } = props;
   const inputStyle = classNames("input", { isHome });
-  const [search, setSearch] = useState([null]);
+  const [search, setSearch] = useState([]);
 
   const handleInput = (event) => {
-    setSearch(event.currentTarget.value.toString());
+    setSearch(event.currentTarget.value);
   };
 
-  const sendSearchState = () => {
-    return props.searchInput(search);
-  };
+  useEffect(() => {
+    props.searchInput({ search });
+  }, [search]);
 
   return (
     <section className="main">
@@ -28,23 +28,13 @@ const Search = (props) => {
         placeholder="Buscar..."
         onChange={handleInput}
       />
-      <label htmlFor="" onChange={sendSearchState}>
-        Resultados para: {search}
-      </label>
+      <label htmlFor="">Resultados para: {search}</label>
     </section>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    currentSearch: state.currentSearch,
-  };
+const mapDispatchToProps = {
+  searchInput,
 };
 
-const mapDispatchToProps = () => {
-  return {
-    searchInput: searchInput,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);
